@@ -47,7 +47,9 @@ int createHandle(usb_dev_handle** handle) {
     // SEARCH FOR DEVICE AND CREATE HANDLE
     vid = rawVid[1] * 256 + rawVid[0];
     pid = rawPid[1] * 256 + rawPid[0];
-    if(usbOpenDevice(handle, vid, vendor, pid, product, NULL, NULL, NULL) != 0){
+    //if(usbOpenDevice(handle, vid, NULL, pid, NULL, NULL, stderr, stderr) != 0){
+    //if(usbOpenDevice(handle, vid, vendor, pid, product, NULL, NULL, stderr) != 0){
+    if(usbOpenDevice(handle, vid, "*", pid, "*", NULL, NULL, stderr) != 0){
         fprintf(
             stderr,
             "Could not find USB device \"%s\" with vid=0x%x pid=0x%x\n",
