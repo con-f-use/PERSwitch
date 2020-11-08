@@ -25,7 +25,7 @@ GUIFLAGS = $(CFLAGS) $(PKG_CFLAGS) $(PKG_LIBS)
 
 # default rule
 .PHONY: all
-all:$(COM) # $(GUI)
+all:$(COM) $(GUI)
 
 #build PERgui system tray icon
 $(GUI):$(GUIOBJECTS)

@@ -8,8 +8,13 @@ in
 stdenv.mkDerivation {
     inherit name;
 
-    src = ./.;
+    src = ./..;
     buildInputs = [ libusb-compat-0_1 ];
+
+    buildPhase = ''
+        cd clientsoftware
+        make PERScom
+    '';
 
     installPhase = ''
         install -Dm 555 PERScom $out/bin/PERScom
