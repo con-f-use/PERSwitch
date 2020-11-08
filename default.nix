@@ -12,7 +12,7 @@
 pkgs.lib.makeExtensible (self: rec {
   inherit pkgs;
 
-  perscom = pkgs.callPackage ./perscom.nix {
+  perscom = pkgs.callPackage ./clientsoftware/perscom.nix {
     #xfce4-power-manager = pkgs.xfce.xfce4-power-manager;
   };
   #persgui = ...;
