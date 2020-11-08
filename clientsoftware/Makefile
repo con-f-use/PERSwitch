@@ -18,9 +18,14 @@ PKG_LIBS = $(shell pkg-config --libs gtk+-2.0)
 CFLAGS = -Wall -Wextra -O3 -lusb
 GUIFLAGS = $(CFLAGS) $(PKG_CFLAGS) $(PKG_LIBS)
 
+# This is for compiling on nixos without packaging or shell
+#CC = gcc
+#INCLUDES = -I/nix/store/aiqxjxjapl9dhi5b21pi16kv5hcvw3q1-libusb-compat-0.1.7-dev/include
+
+
 # default rule
 .PHONY: all
-all:$(COM) $(GUI)
+all:$(COM) # $(GUI)
 
 #build PERgui system tray icon
 $(GUI):$(GUIOBJECTS)
@@ -31,7 +36,7 @@ $(GUI).o:
 
 #build PERScom command line client
 $(COM):$(COMOBJECTS)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $^ $(INCLUDES)
 
 # symbolic targets:
 help:
@@ -49,4 +54,4 @@ cleanall:
 
 # Generic rule for compiling C files:
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
