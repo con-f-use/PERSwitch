@@ -16,7 +16,7 @@ stdenv.mkDerivation {
         install -Dm 555 PERScom $out/bin/PERScom
     '';
 
-    meta = with stdenv.lib {
+    meta = with stdenv.lib; {
         homepage = "https://github.com/con-f-use/perswitch";
         description = "Command line interface for home made power switch";
         license = licenses.mit;
