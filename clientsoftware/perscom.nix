@@ -1,4 +1,4 @@
-{ stdenv, libusb-compat-0_1 }:
+{ stdenv, lib, libusb-compat-0_1 }:
 
 stdenv.mkDerivation {
     pname = "perscom";
